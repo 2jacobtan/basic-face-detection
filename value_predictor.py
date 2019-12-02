@@ -14,6 +14,7 @@ def solution(list1):
 copy_pasta = """value_predictor([1,2,3,4,5,6]) should return 3.5
 value_predictor([1,1,1,6,6,6]) should return either 3.5 closer to 3.45 depending on method"""
 
+# generate test set from copy_pasta
 test_set = []
 for line in copy_pasta.splitlines():
   match = re.match(r"\D+(\[[0-9,]+\])\D+([0-9\.]+)",line)
@@ -22,6 +23,8 @@ for line in copy_pasta.splitlines():
 
 #print(test_set)
 
+# If the file is run with a list as an argument, execute the solution function using the list
+# Default behaviour: execute test cases
 if len(sys.argv) >= 2:
   list1 = eval(sys.argv[1])
   sys.stdout.write(repr(solution(list1)))
