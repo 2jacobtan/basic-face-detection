@@ -91,8 +91,9 @@ for i in range(8):
 system_output = f'{{"face_tiles": {detected_faces}}}'
 sys.stdout.write(system_output)
 
-print("\n")
-print(json.loads(system_output)["face_tiles"])
+# # check that output is valid JSON
+# print("\n")
+# print(json.loads(system_output)["face_tiles"])
 
 show_image(image, "after detection")
 
