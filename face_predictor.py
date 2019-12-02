@@ -15,7 +15,9 @@ def close_images():
   cv2.destroyAllWindows()
 
 # Get the image url
-if len(sys.argv) == 2:
+## Use the access token given by the user as an argument when running the python file
+## If no token is given by the user, use default token
+if len(sys.argv) >= 2:
   access_token = sys.argv[1]
 else:
   access_token = "a39a2418dfeec087"
@@ -41,12 +43,13 @@ image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 # Convert image to grayscale
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+# split up the 8x8 grid of face tiles into a 2-dimensional tuple of the inidivdual tiles
 images = tuple(
   tuple(gray[i*100:i*100+100,j*100:j*100+100] for j in range(8))
     for i in range(8)
 )
 
-# #To test that images are correctly loaded and indexed
+# #To check that the individual face tiles are correctly loaded and indexed
 # for i in range(8):
 #   for j in range(8):
 #     show_image(images[i][j],f"{i}{j}")
